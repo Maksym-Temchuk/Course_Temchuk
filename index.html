@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Голосовий асистент з підбору ПК</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-theme">
+
+    <div id="login-overlay" class="modal-overlay">
+        <div class="modal-content login-box">
+            <div class="brand large-brand">
+                <i class="fa-solid fa-microchip"></i>
+                <span>PC Build AI</span>
+            </div>
+            <h2>Вхід до системи</h2>
+            <p>Ваш розумний асистент з підбору комплектуючих</p>
+            
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" placeholder="maksym.temchuk@kpi.ua">
+            </div>
+            <div class="form-group">
+                <label>Пароль</label>
+                <input type="password" placeholder="••••••••">
+            </div>
+            
+            <button class="primary-btn w-100">Увійти</button>
+            
+            <div class="login-footer">
+                <small>Університетський проєкт (Основи веб-програмування)</small>
+            </div>
+        </div>
+    </div>
+
+    <div class="app-container">
+        
+        <nav class="sidebar">
+            <div class="brand">
+                <i class="fa-solid fa-microchip"></i>
+                <span>PC Build AI</span>
+            </div>
+            
+            <button class="new-chat-btn" onclick="window.location.reload();">
+                <i class="fa-solid fa-plus"></i> Нова збірка
+            </button>
+            
+            <div class="history-section">
+                <small>Збережені збірки</small>
+                <ul class="history-list">
+                    <li class="history-item" style="color: var(--text-secondary); font-size: 13px; cursor: default;">
+                        Завантаження даних...
+                    </li>
+                </ul>
+            </div>
+
+            <div class="user-settings">
+                <button id="theme-toggle" class="icon-btn" title="Змінити тему">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+                <div class="user-profile" title="Відкрити налаштування профілю" style="cursor: pointer;">
+                    <div class="avatar">M</div>
+                    <span>Профіль</span>
+                </div>
+            </div>
+        </nav>
+
+        <main class="chat-wrapper">
+            <div class="chat-container">
+                <div class="chat-box" id="chat-box">
+                    <div class="message bot">
+                        <div class="msg-avatar"><i class="fa-solid fa-robot"></i></div>
+                        <div class="msg-content">
+                            <p>Синхронізація з базою даних...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="input-container">
+                <div class="input-box">
+                    <button id="mic-btn" class="mic-btn" title="Голосовий ввід (Web Speech API)">
+                        <i class="fa-solid fa-microphone"></i>
+                    </button>
+                    <input type="text" id="text-input" placeholder="Скажи або напиши, що потрібно зібрати...">
+                    <button id="send-btn" class="send-btn" title="Відправити запит">
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </main>
+        
+    </div>
+
+    <div id="settings-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Налаштування профілю</h3>
+                <button class="icon-btn close-modal"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            
+            <div class="settings-section">
+                <h4>Інтерфейс</h4>
+                <div class="form-group row">
+                    <label>Тема оформлення</label>
+                    <select id="theme-select" class="custom-select">
+                        <option value="dark">Темна</option>
+                        <option value="light">Світла</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="settings-section">
+                <h4>Апаратні преференції (Контекст для ШІ)</h4>
+                <div class="form-group">
+                    <label>Улюблена платформа</label>
+                    <select class="custom-select" id="platform-select">
+                        <option value="Any">Без різниці (ШІ вирішує сам)</option>
+                        <option value="AMD" selected>AMD (AM5 / AM4)</option>
+                        <option value="Intel">Intel (LGA 1700)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Специфічні вимоги до заліза</label>
+                    <input type="text" placeholder="Наприклад: відновлення ланцюгів живлення, пайка SMD...">
+                </div>
+            </div>
+            
+            <button class="primary-btn save-settings">Зберегти</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
